@@ -1,0 +1,21 @@
+{
+  "exclude": [
+    "./files",
+    /* These 4 are defaults from https://www.typescriptlang.org/tsconfig#exclude */
+    "./node_modules",
+    "./bower_components",
+    "./jspm_packages",
+    "./dist"
+  ],
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "lib": [
+      "es2019"
+    ],
+    "sourceMap": true,
+    "baseUrl": "./", 
+    "outDir": "./dist",
+    "skipLibCheck": true
+  }
+}

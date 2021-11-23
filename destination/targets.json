@@ -1,0 +1,15 @@
+[{
+    "Customer": "Generic",
+    "Deployment": "Google",
+    "Mode": "prod",
+    "Region": "global",
+    "URL": "https://google.com"
+},{
+    "Customer": "Microsoft",
+    "Deployment": "AzurePortal",
+    "Mode": "prod",
+    "Region": "global",
+    "URL": "https://portal.azure.com"
+}]
+
+

@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodepinger
+spec:
+  # Run as many as you like in parallell
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodepinger
+  template:
+    metadata:
+# Annotating on pod to get multiple results back to average
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "9090"
+      labels:
+        app: nodepinger
+    spec:
+      volumes:
+        # Loads readycheck configmap
+        - name: targets
+          configMap:
+            name: readycheck
+            defaultMode: 420
+      dnsConfig:
+        options:
+          - name: ndots
+            value: '2'
+      containers:
+      - name: nodepinger
+        image: <replace_with_your_image>
+        imagePullPolicy: Always
+        env:
+          - name: SOURCE_REGION
+            value: "cluster_region"
+          - name: PING_FREQUNCY_SECONDS
+            value: "10"
+          - name: PING_PARALLELISM
+            value: "5"
+          - name: PING_TIMEOUT_MILLISECONDS
+            value: "2500"
+        resources:
+          requests:
+            memory: "42Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        volumeMounts:
+          - mountPath: /nodepinger/destination
+            name: targets
+        ports:
+        - containerPort: 9090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodepinger
+# Disabled service annotations to get multi-pod annotations
+#  annotations:
+#    prometheus.io/scrape: "true"
+#    prometheus.io/path: "/metrics"
+#    prometheus.io/port: "9090"
+spec:
+  selector:
+    app: nodepinger
+  ports:
+  - port: 9090
+    targetPort: 9090
+---
+### USES configmap from readycheck, otherwise can be defined here

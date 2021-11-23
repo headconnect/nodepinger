@@ -1,0 +1,21 @@
+{
+  "name": "nodeping",
+  "version": "0.1.2",
+  "description": "TCP Ping for Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johannes Kanavin",
+  "license": "ISC",
+  "dependencies": {
+    "@types/async": "^3.2.9",
+    "async": "^3.2.2",
+    "node-cron": "^3.0.0",
+    "prom-client": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "typescript": "^4.4.3"
+  }
+}
