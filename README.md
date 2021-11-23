@@ -7,6 +7,7 @@ The intention is to measure the time it takes for this operation as precisely as
 To that end - it performs its task in two modes:
 
 `ip`: the `targets.json` list of targets are pre-resolved with DNS so that this is not required to establish the connection.
+
 `dns`: the `ip` of the `target` is resolved prior to each "ping".
 
 Both metrics are recorded and available for scraping for each target (excepting ip-only targets)
@@ -16,7 +17,7 @@ Both metrics are recorded and available for scraping for each target (excepting 
 
 The configuration of nodepinger is as a) a set of targets and b) a set of environment variables which governs its operation. 
 
-> Note: For the kubernetes deployment, it is presumed that you manage a single "targets" configmap as this is usually run in conjunction with `readychecker`. If this is not the case, take the 
+> NOTE: For the kubernetes deployment, it is presumed that you manage a single "targets" configmap as this is usually run in conjunction with `readychecker`. If this is not the case, take the 
 
 
 
