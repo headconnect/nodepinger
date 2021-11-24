@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Johannes Kanavin",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/async": "^3.2.9",
     "async": "^3.2.2",
